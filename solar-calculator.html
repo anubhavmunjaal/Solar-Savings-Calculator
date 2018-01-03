@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+
+  <!-- CSS | Main style file -->
+  <link href="css/style-main.css" rel="stylesheet" type="text/css">
+  <!-- CSS | Custom Margin Padding Collection -->
+  <link href="css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+  <div id="wrapper" class="clearfix">
+    <!-- Start main-content -->
+    <div class="main-content">
+      <section class="mt-10">
+        <div class="container">
+          <div class="section-content">
+            <div class="row" ng-app="myApp" ng-controller="myCtrl">
+              <center>
+                <h3 class="bg-theme-colored  mb-0 text-white"><br>Savings Calculator</h3></center>
+              <div class="col-sm-12 col-md-6 bg-light">
+                <form id="volunteer_apply_form" class=" p-30 pb-15" name="job_apply_form" method="post" enctype="multipart/form-data" novalidate="novalidate">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Roof Area in sqm <small>*</small></label>
+                        <input ng-model="roof_area" placeholder="Enter Value in sqm " required="" class="form-control" aria-required="true" type="number">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Connected Load in Kw<small>* </small></label>
+                        <input ng-model="load" id="load" name="form_email" class="form-control required " placeholder="Enter Value in kw" aria-required="true" type="number">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Power Consumption in units / month<small>*</small></label>
+                        <p style="font-size:12px">Preferably average monthly consumption for last 12 months
+                        </p>
+                        <input ng-model="power_consumption" name="power_consumption" class="form-control required " placeholder="Enter Value in Units" aria-required="true" type="number">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Monthly Power Bill in KSH / Month<small>*</small></label>
+                        <p style="font-size:12px">Power bill should be matched with the power consumption
+                        </p>
+                        <input ng-model="bill" name="bill" class="form-control required " placeholder="Enter Value in KSH" aria-required="true" type="number">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="form_sex">Do you have a DG back-up? <small>*</small></label>
+                        <select ng-model="selectedGenerator" id="form_sex" name="form_sex" class="form-control required" aria-required="true">
+                        <option ng-repeat="x in generator" value="{{x.value}}" selected>{{x.name}}</option>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="form_branch">Installation <br>Location <small>*</small></label>
+                        <select ng-model="selectedLocation" id="form_branch" name="form_branch" class="form-control required" aria-required="true">
+  <option ng-repeat="x in location" value="{{x.value}}" selected>{{x.name}}</option>
+                    </select>
+                        <p style="font-size:12px">Choose the nearest area</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="form-group">
+   <button id="calculate" type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" >Calculate Now</button>
+</div> -->
+                  <hr size="3">
+                  <hr>
+                  <div class="form-group">
+                    <input name="form_botcheck" class="form-control" value="" type="hidden">
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-6 bg-light centered">
+                <h2 style="text-align:center">Results</h2><br><br>
+                <table class="table table-striped">
+                  <tr>
+                    <td>Size range: </td>
+                    <td>{{sizeRange()*0.9 | number:0 }} - {{sizeRange()*1.1 | number:0}} kw</td>
+                  </tr>
+                  <tr>
+                    <td>Units Generated: </td>
+                    <td>{{unitsGenerated() | number:0}} kwh</td>
+                  </tr>
+                  <tr>
+                    <td>Lifetime Savings:</td>
+                    <td> KSH {{pv() | number:0}},000</td>
+                  </tr>
+                </table>
+                </span>
+                </label>
+                </h3>
+                </span><br><br><br><br><br><br><br><br><br><br><br><br>
+                <hr size="3">
+                <hr>
+              </div>
+              <!-- <div class="col-sm-12 col-md-7 sm-text-center">
+              <img src="images/about/8.png" alt="">
+            </div> -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- end main-content -->
+    <!-- Footer -->
+  </div>
+  <!-- end wrapper -->
+  <!-- Footer Scripts -->
+  <script src="js/jquery-2.2.4.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+  <!-- JS | Custom script for all pages -->
+
+  <script src="js/modules.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+
+</html>
